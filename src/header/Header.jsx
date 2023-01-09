@@ -17,6 +17,11 @@ const Header = () => {
             Films
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/new" exact>
+            Ajouter
+          </NavLink>
+        </li>
       </ul>
     </div>
   );
