@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useForm } from "react-hook-form";
  
-import "./NewItem.css";
+import "./Update.css";
  
 const UpdateItem = () => {
   const {
@@ -59,7 +59,7 @@ const UpdateItem = () => {
       <label className="label-rhf">URL de l'image</label>
       <input className="input-rhf" {...register("imageUrl")} />
  
-      <input type="submit" />
+      <input type="submit" className="input-rhf" />
     </form>
   );
 };
