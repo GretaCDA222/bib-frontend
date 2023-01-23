@@ -1,7 +1,9 @@
 import React, {useState} from "react";
+import { useHistory } from "react-router-dom";
+
 import "./newItem.css";
 
-const NewItem = () => {
+const NewItem = (props) => {
 
     const [errors, setErrors] = useState({})
     const [form, setForm] = useState({
@@ -10,6 +12,7 @@ const NewItem = () => {
         auteur: "",
         imageUrl: ""
     })
+    const history = useHistory();
 
     const handleChange = e => {
         setForm({
@@ -76,9 +79,29 @@ const NewItem = () => {
         return isFormValid;
       };
 
-    const itemSubmitHandler = event => {
+    const itemSubmitHandler = async (event) => {
         event.preventDefault()
         console.log({form})
+        const addData = async () => {
+          try {
+            await fetch(`http://localhost:5000/api/${props.route}`, {
+              method: "POST",
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                auteur: form.auteur,
+                annee: form.annee,
+                titre: form.titre,
+                imageUrl: form.imageUrl,
+              })
+            })
+          } catch (error) {
+            console.log(error.message)
+          }
+          history.push(`/${props.route}`)
+        }
+        addData();
     }
 
     

@@ -17,11 +17,17 @@ function App() {
         <Route path="/" exact>
           <Musiques />
         </Route>
+        <Route path="/musiques" exact>
+          <Musiques />
+        </Route>
         <Route path="/films" exact>
           <Films />
         </Route>
-        <Route path="/new" exact>
-          <NewItem />
+        <Route path="/musique/new" exact>
+          <NewItem route="musiques" />
+        </Route>
+        <Route path="/film/new" exact>
+          <NewItem route="films" />
         </Route>
         <Route path="/update" exact>
           <UpdateItem />

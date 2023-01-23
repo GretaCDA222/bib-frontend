@@ -18,8 +18,13 @@ const Header = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/new" exact>
-            Ajouter
+          <NavLink to="/musique/new" exact>
+            Ajouter Musique
+          </NavLink>
+          </li>
+          <li>
+          <NavLink to="/film/new" exact>
+            Ajouter Film
           </NavLink>
         </li>
       </ul>
