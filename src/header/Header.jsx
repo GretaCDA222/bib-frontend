@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from '../context/auth-context'
 
 import "./Header.css"
 
 const Header = () => {
+  const auth = useContext(AuthContext)
   return (
     <div className="main-header" >
       <ul className="nav-links" >
@@ -21,8 +23,22 @@ const Header = () => {
           <NavLink to="/musique/new" exact>
             Ajouter Musique
           </NavLink>
-          </li>
+        </li>
+        {!auth.isLoggedIn && (
           <li>
+            <NavLink to="/login">Login</NavLink>
+          </li>)}
+
+        {!auth.isLoggedIn && (
+          <li>
+            <NavLink to="/signup">Signup</NavLink>
+          </li>)}
+        {auth.isLoggedIn && (
+          <li>
+            <button onClick={auth.logout}>Logout</button>
+          </li>
+        )}
+        <li>
           <NavLink to="/film/new" exact>
             Ajouter Film
           </NavLink>

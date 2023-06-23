@@ -1,9 +1,11 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import { useHistory } from "react-router-dom";
+import { AuthContext } from '../context/auth-context'
 
 import "./newItem.css";
 
 const NewItem = (props) => {
+  const auth = useContext(AuthContext)
 
     const [errors, setErrors] = useState({})
     const [form, setForm] = useState({
@@ -87,7 +89,8 @@ const NewItem = (props) => {
             await fetch(`http://localhost:5000/api/${props.route}`, {
               method: "POST",
               headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + auth.token 
               },
               body: JSON.stringify({
                 auteur: form.auteur,
